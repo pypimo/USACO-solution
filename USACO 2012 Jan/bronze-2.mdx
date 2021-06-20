@@ -1,0 +1,34 @@
+http://www.usaco.org/index.php?page=viewproblem2&cpid=104#:~:text=The%20first%20instruction%20is%20to,after%20Bessie%20completes%20the%20instructions.&text=The%20median%20stack%20height%20is,%2C2%2C3%2C3.
+
+```cpp
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+ll P[1000010];
+
+int main() {
+    
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    ll n, k, a, b;
+    cin >> n >> k;
+
+    while(k--) {
+        cin >> a >> b;
+        P[b+1]--;
+        P[a]++;
+    }
+
+    for (ll i=1; i<=n; i++) {
+        P[i]+=P[i-1];
+    }
+    sort(P+1, P+n+1);
+    cout << P[n/2+1];
+
+    return 0;
+}
+```
+
+**Submittable here** https://www.spoj.com/problems/HAYBALE/
