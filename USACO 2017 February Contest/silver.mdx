@@ -1,0 +1,36 @@
+http://www.usaco.org/index.php?page=viewproblem2&cpid=715
+
+```cpp
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+ll A[100010];
+
+int main() {
+    freopen("maxcross.in", "r", stdin);
+    freopen("maxcross.out", "w", stdout);
+    
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    ll n, k, b, m=1e6, inp;
+    cin >> n >> k >> b;
+
+    while(b--) {
+        cin >> inp;
+        A[inp]=1;
+    }
+
+    for (ll i=1; i<=n; i++) {
+        A[i]+=A[i-1];
+    }
+
+    for (ll i=k; i<=n; i++) {
+        m = min(m, A[i]-A[i-k]);
+    }
+    cout << m;
+
+    return 0;
+}
+```
