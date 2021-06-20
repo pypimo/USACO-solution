@@ -1,0 +1,43 @@
+http://www.usaco.org/index.php?page=viewproblem2&cpid=691
+
+```cpp
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+ll H[100010], P[100010], S[100010];
+
+int main() {
+    freopen("hps.in", "r", stdin);
+    freopen("hps.out", "w", stdout);
+    
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    ll n, m, Max=0;
+    cin >> n;
+    char inp;
+
+    for (ll i=1; i<=n; i++) {
+        cin >> inp;
+        if (inp=='H') P[i]++;
+        if (inp=='S') H[i]++;
+        if (inp=='P') S[i]++;
+    }
+
+    for (ll i=1; i<=n; i++){
+        H[i]+=H[i-1];
+        P[i]+=P[i-1];
+        S[i]+=S[i-1];
+    }
+
+    for (ll i=1; i<=n; i++) {
+        m = max({H[i], P[i], S[i]})+ max({H[n]-H[i], P[n]-P[i], S[n]-S[i]});
+        Max = max(m, Max);
+    }
+
+    cout << Max;
+
+    return 0;
+}
+```
