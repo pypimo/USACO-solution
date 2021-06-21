@@ -1,0 +1,53 @@
+http://www.usaco.org/index.php?page=viewproblem2&cpid=919
+
+weird prob statement: just think that their right corner point are off by one, i.e. x2 is actuly x2-1 and so for y2
+
+
+```cpp
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+ll A[1010][1010];
+
+int main() {
+    freopen("paintbarn.in", "r", stdin);
+    freopen("paintbarn.out", "w", stdout);
+    
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    ll n , k, x1, x2, y1,y2, ct=0;
+    cin >> n >> k;
+    
+    while(n--) {
+        cin >> x1 >>y1 >> x2>> y2;
+        x1++; x2++; y1++; y2++;
+        A[x1][y1]++;
+        A[x2][y2]++;
+        A[x1][y2]--;
+        A[x2][y1]--; 
+    }
+
+    //ps
+    for (ll i=1; i<=1001; i++) {
+        for (ll j=1; j<=1001; j++) {
+            A[i][j]+=A[i-1][j]+A[i][j-1]-A[i-1][j-1];
+            if (A[i][j]==k) ct++;
+        }
+    }
+
+    // for (ll i=1; i<=10; i++) {
+    //     for (ll j=1; j<=10; j++) {
+    //         cout << A[i][j] << " ";
+    //     }
+    //     cout << '\n';
+    // }
+
+    cout << ct;
+
+
+    return 0;
+}
+
+```
