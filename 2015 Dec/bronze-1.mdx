@@ -25,7 +25,26 @@ int main() {
 ```
 
 
-## FAST SOLUTION
+## O(1)
 ```cpp
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+ll A[110], ct=0;
+
+int main() {
+    freopen("paint.in", "r", stdin);
+    freopen("paint.out", "w", stdout);
+    
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    ll a, b, c, d;
+    cin >> a >> b >> c >> d;
+    ll s= (b-a)+(d-c);
+    s-=max(min(d, b)-max(c,a), 0ll);
+    cout <<s;
+    
+}
 
 ```
