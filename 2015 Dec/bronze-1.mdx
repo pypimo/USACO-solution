@@ -1,0 +1,31 @@
+http://www.usaco.org/index.php?page=viewproblem2&cpid=567
+
+## Slow solution- if contraints were 0...10^9 instead of 0..100
+```cpp
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+ll A[110], ct=0;
+
+int main() {
+    freopen("paint.in", "r", stdin);
+    freopen("paint.out", "w", stdout);
+    
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    ll a, b, c, d;
+    cin >> a >> b >> c >> d;
+    for (ll i=a; i<b; i++) A[i]++;
+    for (ll i=c; i<d; i++) A[i]++;
+    for (ll i=0; i<=100; i++) if(A[i]) ct++;
+    cout <<ct;
+    
+}
+```
+
+
+## FAST SOLUTION
+```cpp
+
+```
