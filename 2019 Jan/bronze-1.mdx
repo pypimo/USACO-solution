@@ -1,0 +1,35 @@
+http://www.usaco.org/index.php?page=viewproblem2&cpid=891
+
+```cpp
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+const ll MAX_N = 4;
+ll A[MAX_N][MAX_N];
+ll ct[MAX_N];
+
+int main() {
+    freopen("shell.in", "r", stdin);
+    freopen("shell.out", "w", stdout);
+
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    A[1][1]=1; A[2][2]=1; A[3][3]=1;
+
+    ll n, a, b, c, g;
+    cin >> n;
+    while(n--) {
+        cin >> a >> b >> g;
+        for (ll i=1; i<=3; i++) {
+            swap(A[i][a], A[i][b]);
+            ct[i]+=A[i][g];
+        }
+    }
+
+    cout << max({ct[1], ct[2], ct[3]});
+
+    return 0;
+}
+
+```
