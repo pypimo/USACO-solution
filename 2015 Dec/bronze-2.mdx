@@ -1,0 +1,49 @@
+http://www.usaco.org/index.php?page=viewproblem2&cpid=568
+
+```cpp
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+const ll MAX_N = 110;
+ll speed[MAX_N], limit[MAX_N];
+    
+int main() {
+    freopen("speeding.in", "r", stdin);
+    freopen("speeding.out", "w", stdout);
+
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    memset(speed,-1, sizeof speed);
+    memset(limit,-1, sizeof limit);
+    
+    ll n, m, start=0, a, b, diff=0;
+    cin >> n >>m;
+    
+
+    while(n--) {
+        cin >> a >> b;
+        start+=a;
+        limit[start]=b;
+    }
+    start=0;
+    while(m--) {
+        cin >> a >> b;
+        start+=a;
+        speed[start]=b;
+    }
+    ll cur_lim=limit[100], cur_speed=speed[100];
+    
+    for (ll i=100; i>0; i--) {
+        if (limit[i]!=-1) cur_lim=limit[i];
+        if (speed[i]!=-1) cur_speed=speed[i];
+        speed[i]=cur_speed;
+        limit[i]=cur_lim;
+        diff = max(diff, speed[i]-limit[i]);
+    }
+
+    cout << diff;
+
+    return 0;
+}
+```
