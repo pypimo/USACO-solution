@@ -1,0 +1,32 @@
+## Wrong Solution
+http://www.usaco.org/index.php?page=viewproblem2&cpid=735
+
+```cpp
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+    
+int main() {
+    freopen("lostcow.in", "r", stdin);
+    freopen("lostcow.out", "w", stdout);
+
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    ll x,y,mul=1, search1, tot=0;
+    cin >> x >> y;
+    ll search2=x;
+    while(search2<y) {
+        search1 = search2;
+        search2 = x+mul;
+        mul*=(-2);
+        if (search2<0) search2=0;
+        else if (search2>y) search2=y;
+        tot+=abs(search2-search1);
+        //cout <<abs(search2-search1) << "\n";
+    }
+    cout << tot;
+    return 0;
+}
+```
