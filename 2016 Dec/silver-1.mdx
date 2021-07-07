@@ -1,0 +1,31 @@
+http://www.usaco.org/index.php?page=viewproblem2&cpid=666
+
+```cpp
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+ll A[100010];
+
+int main() {
+    freopen("haybales.in", "r", stdin);
+    freopen("haybales.out", "w", stdout);
+    
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    
+    ll n, q, a, b ;
+    cin >> n >> q;
+    
+    for (ll i=0; i<n; i++) {
+        cin >> A[i];
+    }
+    sort(A, A+n);
+    while(q--) {
+        cin >> a >> b;
+        cout << upper_bound(A, A+n, b)-lower_bound(A, A+n, a)  << '\n'; 
+    }
+
+    return 0;
+}
+```
