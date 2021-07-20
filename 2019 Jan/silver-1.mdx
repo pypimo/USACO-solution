@@ -1,0 +1,36 @@
+http://www.usaco.org/index.php?page=viewproblem2&cpid=894
+
+```cpp
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+vector<ll> adj[100010];
+
+int main() {
+    freopen("planting.in", "r", stdin);
+    freopen("planting.out", "w", stdout);
+    
+    ios::sync_with_stdio(0);
+    cin.tie(0); 
+    
+    ll n, a, b;
+    cin >> n;
+    
+    for (ll i=1; i<n; i++) {
+        cin >> a >>b;
+        adj[a].push_back(b);
+        adj[b].push_back(a);
+    }
+    
+    ll M=1;
+    for (ll i=1; i<=n; i++) {
+        ll x = adj[i].size()+1;
+        M = max(M, x);
+    }
+    
+    cout << M;
+    
+    return 0;
+}
+```
