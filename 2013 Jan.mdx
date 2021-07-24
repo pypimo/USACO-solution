@@ -1,0 +1,46 @@
+``` cpp
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+const ll maxN=1000010;
+vector <ll> A[maxN];
+queue <ll> q;
+
+int main() {
+    freopen("invite.in", "r", stdin);
+    freopen("invite.out", "w", stdout);
+
+    ll n, g, inp, t, s=0;
+    cin >> n >> g;
+    
+    for (ll i=1; i<=g; i++) {
+        cin >> t;
+        for (ll j=0; j<t; j++) {
+            cin >> inp;
+            A[i].push_back(inp);
+        }
+        sort(A[i].begin(), A[i].end());
+    }
+    q.push(1);
+    
+    ll f=0;
+    while(!q.empty()) {
+        f=0;
+        for (ll i=1; i<=g; i++) {
+            ll x = lower_bound(A[i].begin(), A[i].end(), q.front())-A[i].begin();
+            
+            if (binary_search(A[i].begin(), A[i].end(), q.front())) {
+                f=1;
+                A[i].erase(A[i].begin()+x);
+                if (A[i].size()==1) q.push(A[i][0]);
+            }
+        }
+        q.pop();
+        if (f) s++;
+    }
+    
+    cout << s;
+
+    return 0;
+}```
