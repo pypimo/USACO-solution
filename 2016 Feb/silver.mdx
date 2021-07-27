@@ -1,0 +1,67 @@
+http://www.usaco.org/index.php?page=viewproblem2&cpid=620
+
+```cpp
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+ll vis[210][210];
+ll dis[210][210];
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    freopen("pails.in", "r", stdin );
+    freopen("pails.out", "w", stdout);
+    
+    ll x, y, k, m;
+    cin >> x >> y >> k >> m;
+    
+    queue<pair<ll, ll>> q;
+    q.push({0, 0});
+    vis[0][0]=1;
+    
+    while(!q.empty()) {
+        
+        auto curr = q.front(); q.pop();
+        if (dis[curr.first][curr.second]>k)  break;
+        while(!q.empty() && (curr.first>x || curr.second>y) ) {
+            curr = q.front(); q.pop();
+        }
+        if (curr.first>x || curr.second>y) break;
+
+        ll d = dis[curr.first][curr.second]+1;
+        
+        //cout << d-1 << " " << curr.first << " " << curr.second << '\n';
+        
+        ll first = x-curr.first;
+        ll second = y-curr.second;
+        
+        // possible cases
+        if (!vis[x][curr.second]) { vis[x][curr.second]=1; q.push({x, curr.second});  dis[x][curr.second]=d;}
+        if (!vis[curr.first][y]) { vis[curr.first][y]=1; q.push({curr.first, y});  dis[curr.first][y]=d;}
+        if (!vis[curr.first][0]) { vis[curr.first][0]=1; q.push({curr.first, 0});  dis[curr.first][0]=d;}
+        if (!vis[0][curr.second]) { vis[0][curr.second]=1; q.push({0, curr.second}); dis[0][curr.second]=d;}
+
+        if (first<=curr.second && !vis[x][curr.second-first])  { vis[x][curr.second-first]=1; q.push({x, curr.second-first}); dis[x][curr.second-first]=d; }
+        else if (!vis[curr.first+curr.second][0]) {vis[curr.first+curr.second][0]=1; q.push({curr.first+curr.second, 0}); dis[curr.first+curr.second][0]=d;}
+        
+        if (second<=curr.first && !vis[curr.first-second][y])  { vis[curr.first-second][y]=1; q.push({curr.first-second, y}); dis[curr.first-second][y]=d; } 
+        else if (!vis[0][curr.first+curr.second]) {vis[0][curr.first+curr.second]=1; q.push({0, curr.first+curr.second}); dis[0][curr.first+curr.second]=d;}
+    }
+    
+    // ans
+    ll M=LLONG_MAX;
+    for (ll i=0; i<=x; i++) {
+        for (ll j=0; j<=y; j++) {
+            if (vis[i][j] && dis[i][j]<=k) {
+                M = min(M, abs(m-(i+j)) );
+            }
+        }
+    }
+    
+    cout << M;
+    return 0;
+}
+```
