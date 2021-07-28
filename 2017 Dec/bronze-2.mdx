@@ -1,0 +1,44 @@
+```cpp
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+ 
+const ll maxN=110;
+ll A[maxN], pos[maxN], NEW[maxN],NAME[maxN];
+ 
+int main() {
+    freopen("shuffle.in", "r", stdin);
+    freopen("shuffle.out", "w", stdout);
+    
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    
+    ll n;
+    cin >> n;
+    
+    for (ll i=1; i<=n; i++) {
+        A[i]=i;
+        cin >> pos[i];
+    }
+    
+    ll t=3;
+    while(t--) {
+        NEW[n+10]={0};
+        for (ll i=1; i<=n; i++) {
+            NEW[pos[i]]=A[i];
+        }
+        for (ll i=1; i<=n; i++) {
+            A[i]=NEW[i];
+        }
+    }
+    for (ll i=1; i<=n; i++) {
+        cin >> NAME[A[i]];
+    }
+    
+    for (ll i=1; i<=n; i++) {
+        cout << NAME[i] << '\n';
+    }
+    
+    return 0;
+}
+```
