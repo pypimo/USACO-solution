@@ -1,0 +1,24 @@
+```cpp
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+int main() {
+    freopen("billboard.in", "r", stdin);
+    freopen("billboard.out", "w", stdout);
+    
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    
+    ll Ax, Ay, AX, AY, Bx, By, BX, BY, Cx, Cy, CX, CY;
+    cin >> Ax >> Ay >> AX >> AY >> Bx >> By >> BX >> BY >> Cx >> Cy >> CX >> CY;
+    
+    ll s = ( (AX-Ax)*(AY-Ay) ) + ( (BX-Bx)*(BY-By) );
+    ll cut = max(0ll, min(AY, CY)-max(Ay, Cy)) * max(0ll, min(AX, CX)-max(Ax, Cx) ) ;
+    cut += max(0ll, min(BY, CY)-max(By, Cy))* max(0ll, min(BX, CX)-max(Bx, Cx) ) ;
+    cout << s-cut;
+    
+    
+    return 0;
+}
+```
