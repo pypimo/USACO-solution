@@ -1,0 +1,27 @@
+```cpp
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+int main() {
+    freopen("billboard.in", "r", stdin);
+    freopen("billboard.out", "w", stdout);
+    
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    
+    ll x1, y1, x2, y2, X1, Y1, X2, Y2, ans;
+    cin >> x1 >> y1 >> x2 >> y2 >> X1 >> Y1 >> X2 >> Y2;
+
+    if (X1<=x1 && X2>=x2 && Y1<=y1 && Y2>=y2) ans=0; 
+    else if (X1<=x1 && X2>=x2 && Y1>y1 && Y2>=y2) ans = (x2-x1)*(Y1-y1);
+    else if (X1<=x1 && X2>=x2 && Y1<=y1 && y2>Y2) ans = (x2-x1)*(y2-Y2);
+    else if (X1>x1 && X2>=x2 && Y1<=y1 && Y2>=y2) ans = (y2-y1)*(X1-x1);
+    else if (X1<=x1 && x2>X2 && Y1<=y1 && Y2>=y2) ans = (y2-y1)*(x2-X2);
+    else ans=(y2-y1)*(x2-x1);
+    
+    cout << ans;
+    
+    return 0;
+}
+```
