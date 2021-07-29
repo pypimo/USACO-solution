@@ -1,0 +1,35 @@
+```cpp
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+const ll maxN=1010;
+ll A[maxN];
+
+int main() {
+    freopen("blist.in", "r", stdin);
+    freopen("blist.out", "w", stdout);
+    
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    
+    ll n, x, y, b, M=0, r=0;
+    cin >> n;
+    
+    for (ll i=0; i<n; i++) {
+        cin >> x >> y >> b;
+        A[x]+=b;
+        A[y+1]-=b;
+        r = max({r, x, y});
+    }    
+    
+    for (ll i=1; i<=r; i++){
+        A[i]+=A[i-1];
+        M = max(M, A[i]);
+    }
+    
+    cout << M;
+    
+    return 0;
+}
+```
