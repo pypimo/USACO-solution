@@ -1,0 +1,24 @@
+http://www.usaco.org/index.php?page=viewproblem2&cpid=807
+
+```cpp
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+int main() {
+    freopen("teleport.in", "r", stdin);
+    freopen("teleport.out", "w", stdout);
+    
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+   
+    ll a, b, x, y;
+    cin >> a >> b >> x >> y;
+    
+    ll ans =  abs(min(a,b)-min(y,x)) + abs(max(a,b)-max(y,x));
+    ans = min(ans, abs(b-a));
+    cout << ans;
+    
+    return 0;
+}
+```
