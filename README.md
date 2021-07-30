@@ -1,2 +1,2 @@
-## USACO sol
+## USACO solutions
 Solutions to USACO problems
