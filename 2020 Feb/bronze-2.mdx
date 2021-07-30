@@ -1,0 +1,35 @@
+http://www.usaco.org/index.php?page=viewproblem2&cpid=1012
+
+```cpp
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+int main() {
+    freopen("breedflip.in", "r", stdin);
+    freopen("breedflip.out", "w", stdout);
+    
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    ll n; 
+    cin >> n;
+    string a, b;
+    cin >> a >> b;
+    ll c[n+10]={0};
+    // a to b
+    
+    ll s=0;
+    for (ll i=0; i<n; i++) {
+        if (a[i]!=b[i]) {
+            c[i]=1;
+            s++;
+            if (i && c[i-1]) s--;
+        }
+    }
+    
+    cout << s;
+    
+    return 0;
+}
+```
