@@ -1,0 +1,28 @@
+http://www.usaco.org/index.php?page=viewproblem2&cpid=663
+
+```
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+const ll maxN = 110;
+ll arr[maxN];
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    ll l, b, ax1, ax2, ay1, ay2, bx1, bx2, by1, by2;
+    
+    freopen("square.in", "r", stdin);
+    freopen("square.out", "w", stdout);
+
+    cin >> ax1 >> ay1 >> ax2 >> ay2;
+    cin >> bx1 >> by1 >> bx2 >> by2;
+    l = max(ay2, by2)-min(ay1, by1);
+    b = max(ax2, bx2)-min(ax1, bx1);
+    cout << pow(max(l,b),2);
+
+    return 0;
+}
+```
